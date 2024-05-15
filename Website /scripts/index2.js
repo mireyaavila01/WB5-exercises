@@ -69,11 +69,8 @@ function getToyByName(){
     let selectedCategory = toyCategoryDropdown.value 
     let toys= getToysForCategoryCode(selectedCategory);
 
-    for(let toy of toys){
-        if(toy.Name == toyname){
-            return toy;
-        }
-    }
+    return toys.find((toy) => toy.name == toyName);
+    
 }
 
 function onToyListChange(){
@@ -85,7 +82,7 @@ function onToyListChange(){
     let selectedToy = getToyByName(selectedToyName);
 
     //show detail row 
-    
+    showDetailRow();
 
     //set detail row elements to represent this toy.
 
