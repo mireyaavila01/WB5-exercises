@@ -3,17 +3,21 @@
 const toyCategoryDropdown =document.getElementById("toyCategoryDropdown");
 const toyList = document.getElementById("toyList");
 const toyDetailRow = document.getElementById("toyDetailRow");
-const toyname = document.getElementById("toyname");
+const toyName = document.getElementById("toyName");
 const toyManufacturer = document.getElementById("toyManufacturer");
 const toyAge  = document.getElementById("toyAge");
 
 window.onload = () => {
+    console.log("onload")
     toyCategoryDropdown.onchange = onToyCategoryDropdownChange;
     toyList.onchange = onToyListChange;
-}
+};
 
 function onToyCategoryDropdownChange(){
     console.log("onToyCategoryDropdownChange")
+
+    //hide the details row to hide previous results
+    hideDetailRow();
 
     //figure out what value was selected (which category)
 
@@ -65,12 +69,13 @@ function getToysForCategoryCode(categoryCode){
     return [];
 }
 
-function getToyByName(){
+function getToyByName(toyName){
+
     let selectedCategory = toyCategoryDropdown.value 
     let toys= getToysForCategoryCode(selectedCategory);
 
     for(let toy of toys){
-        if(toy.Name == toyname){
+        if(toy.name == toyName){
             return toy;
         }
     }
@@ -81,17 +86,18 @@ function onToyListChange(){
 
     let selectedToyName = toyList.value;
 
-//look up selected toy
+    //look up selected toy
     let selectedToy = getToyByName(selectedToyName);
 
-    //show detail row 
-    
 
     //set detail row elements to represent this toy.
 
-    toyname.innerHTML = selectedToy.name;
+    toyName.innerHTML = selectedToy.name;
     toyManufacturer.innerHTML = selectedToy.manufacturer;
     toyAge.innerHTML = selectedToy.age_range;
+
+    //show detail row 
+    showDetailRow();
 
 }
 
@@ -101,7 +107,7 @@ function showDetailRow(){
 
 function hideDetailRow(){
     toyDetailRow.style.display = "none";
-    toyname.innerHTML = "";
+    toyName.innerHTML = "";
     toyManufacturer.innerHTML = "";
     toyAge.innerHTML = "";
 }
