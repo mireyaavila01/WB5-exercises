@@ -1,22 +1,16 @@
 "use strict";
 
-
-function isOver60(arrayValue) {
-    if (arrayValue > 60) {
-    return true;
+let kids = [
+    { first : "Natalie", last : "Plyers" },
+     { first: "Brittany", last: "Ray" },
+     { first: "Zachary", last: "Westly" }
+    ];
+    function buildFullName(arrayElement) {
+     return arrayElement.first + " " + arrayElement.last;
     }
-    else {
-    return false;
+    function displayName(arrayElement) {
+     console.log(arrayElement);
     }
-}
-
-
-   let numbers = [7, 9, 64, 60, 12, 13, 65, 62];
-   let firstValOver60 = numbers.find(isOver60); // returns 64
-   if (firstValOver60 != undefined) {
-    console.log(firstValOver60);
-   }
-
-   else {
-    console.log("No values over 60");
-   }
+    
+    let namesList = kids.map(buildFullName);
+    namesList.forEach(displayName);

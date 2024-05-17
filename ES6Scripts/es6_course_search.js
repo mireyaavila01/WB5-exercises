@@ -85,3 +85,41 @@ function getCourseTitle(specificCourseId){
 }
 
 console.log("The title of the PROJ500 Course is " + getCourseTitle("PROJ500"));
+
+//what are the titles of the courses that cost $50 or less?
+
+function getCertainCourseCost(cost){
+  let theMatchingTitles =[];
+  
+  let matchingCourse = courses.filter(course => course.Fee <= Number(cost));
+
+  if(matchingCourse.length > 0){
+    for(let i = 0; i < matchingCourse.length; i++){
+        theMatchingTitles.push(matchingCourse[i].Title);
+    }
+    
+  }
+
+  return theMatchingTitles;
+
+}
+
+console.log("The titles of the courses that cost $50 or less are " + getCertainCourseCost("50.00"));
+
+
+//what classes meet in "classroom 1"
+
+function getSpecificClassLocation(location){
+    let matchingClasses = [];
+
+    let matchingCourse = courses.filter(course => course.Location === location);
+
+    if(matchingCourse.length > 0){
+        for (let i = 0; i < matchingCourse.length; i++){
+            matchingClasses.push(matchingCourse[i].CourseId);
+        }
+    }
+    return matchingClasses;
+}
+
+console.log("the classes that meet in Classroom 1 are " + getSpecificClassLocation("Classroom 1"));
