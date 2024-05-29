@@ -40,11 +40,19 @@ if(candyNames.length > 0 ){
     }
 }
 console.log("The products that have 'M&M' in their name are " + matchingCandyNames);
+console.log("---------------");
 
 //do we carry "Sweedish Fish" ?
 
+let yesOrNo = "no"; 
+     let swedishFish = candies.filter(candy => candy.product === "Swedish Fish");
+     let carryCandy = swedishFish.length > 0;
 
-
+     if(carryCandy){
+        yesOrNo = "yes"
+     }
+        
+   console.log("Do we carry Sweedish Fish? " + yesOrNo);  
 
 
 
